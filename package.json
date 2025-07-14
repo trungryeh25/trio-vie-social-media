@@ -5,5 +5,27 @@
     "apps/frontend",
     "apps/backend",
     "packages/shared"
-  ]
+  ],
+  "scripts": {
+    "lint": "eslint \"{apps,packages}/**/*.{ts,tsx}\"",
+    "lint:fix": "eslint \"{apps,packages}/**/*.{ts,tsx}\" --fix",
+    "format": "prettier --write .",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.36.0",
+    "@typescript-eslint/parser": "^8.36.0",
+    "eslint": "^9.31.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.5.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.6.2"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
 }

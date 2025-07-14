@@ -1,3 +1,10 @@
 message_commit.txt
 Docs_TrioVieSM.pdf
 ROADMAP.md
+.env
+.env.local
+.eslintrc.js
+.prettierignore
+node_modules
+architecture.md
+
