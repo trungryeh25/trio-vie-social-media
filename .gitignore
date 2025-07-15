@@ -7,4 +7,5 @@ ROADMAP.md
 .prettierignore
 node_modules
 architecture.md
+stage/
 
