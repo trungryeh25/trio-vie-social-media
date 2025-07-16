@@ -1,8 +1,26 @@
 {
   "compilerOptions": {
+    "target": "ES2021",
+    "module": "commonjs",
+    "lib": ["ES2021", "DOM"],
+    "declaration": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "rootDir": "./",
+    "strict": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "baseUrl": ".",
     "paths": {
+      "@app/*": ["apps/*"],
+      "@libs/*": ["libs/*"],
       "@shared/*": ["packages/shared/*"]
     }
-  }
+  },
+  "exclude": ["node_modules", "dist"]
 }

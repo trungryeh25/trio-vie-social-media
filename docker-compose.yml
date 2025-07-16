@@ -6,9 +6,9 @@ services:
     container_name: trio_postgres
     restart: unless-stopped
     environment:
-      POSTGRES_USER: trgvie
-      POSTGRES_PASSWORD: trgviepass
-      POSTGRES_DB: trgvie_db
+      POSTGRES_USER: triov
+      POSTGRES_PASSWORD: Trung147
+      POSTGRES_DB: dbtriov
     ports:
       - '5432:5432'
     volumes:
@@ -22,7 +22,7 @@ services:
     depends_on:
       - postgres
     environment:
-      DATABASE_URL: postgres://trgvie:trgviepass@postgres:5432/trgvie_db
+      DATABASE_URL: postgres://triov:Trung147@postgres:5432/dbtriov
     ports:
       - '3001:3001'
 

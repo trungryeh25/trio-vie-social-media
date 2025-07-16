@@ -10,7 +10,8 @@
     "lint": "eslint \"{apps,packages}/**/*.{ts,tsx}\"",
     "lint:fix": "eslint \"{apps,packages}/**/*.{ts,tsx}\" --fix",
     "format": "prettier --write .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "dev": "echo 'Run individual dev scripts inside apps!'"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^8.36.0",
