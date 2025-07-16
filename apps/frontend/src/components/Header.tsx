@@ -1,40 +1,42 @@
 'use client';
 
 import Link from 'next/link';
-import { useAuthStore } from '@/hooks/useAuthStore';
+import Image from 'next/image';
+import { useAuth } from '@/hooks/useAuth';
 
 export default function Header() {
-  const { user, setUser } = useAuthStore();
-
-  const handleLogout = async () => {
-    await fetch('http://localhost:3000/auth/logout', {
-      method: 'POST',
-      credentials: 'include',
-    });
-    setUser(null);
-    window.location.href = '/login';
-  };
+  const { user, isLoggedIn, logout } = useAuth();
 
   return (
-    <header className="flex justify-between items-center px-6 py-4 shadow-md bg-white">
-      <Link href="/" className="font-bold text-xl">TrioVie</Link>
-      <nav className="flex items-center space-x-4">
-        {user ? (
+    <header className="flex items-center justify-between px-6 py-4 shadow-md bg-white">
+      <Link href="/" className="text-xl font-bold">
+        TrioVie
+      </Link>
+
+      <nav className="flex items-center gap-4">
+        {isLoggedIn ? (
           <>
-            <Link href="/profile" className="text-gray-700 hover:underline">
-              {user.name}
+            <Link href="/profile" className="hover:underline">
+              <Image
+                src={user?.avatar || '/default_avatar.svg'}
+                alt="Avatar"
+                width={32}
+                height={32}
+                className="rounded-full"
+              />
             </Link>
-            <button
-              onClick={handleLogout}
-              className="text-red-500 hover:underline"
-            >
+            <button onClick={logout} className="text-red-500 hover:underline">
               Logout
             </button>
           </>
         ) : (
           <>
-            <Link href="/login" className="text-gray-700 hover:underline">Login</Link>
-            <Link href="/register" className="text-gray-700 hover:underline">Register</Link>
+            <Link href="/login" className="hover:underline">
+              Login
+            </Link>
+            <Link href="/register" className="hover:underline">
+              Register
+            </Link>
           </>
         )}
       </nav>

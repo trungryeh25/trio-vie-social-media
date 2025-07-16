@@ -4,12 +4,15 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import ProfileForm from '@/components/ProfileForm';
 import { useRouter } from 'next/navigation';
-import Loading from '@/components/Loading'; // ✅ thêm component loader đẹp
+import Loading from '@/components/Loading';
+import { useAuth } from '@/hooks/useAuth';
+import type { UserDto } from '@shared/dtos';
 
 export default function EditProfilePage() {
-  const [profile, setProfile] = useState<any>(null);
+  const [profile, setProfile] = useState<UserDto | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
+  const { setUser } = useAuth();
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -26,7 +29,7 @@ export default function EditProfilePage() {
       }
     };
     fetchProfile();
-  }, [router]);
+  }, [router, setUser]);
 
   if (isLoading) return <Loading />;
 

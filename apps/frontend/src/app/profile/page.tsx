@@ -1,15 +1,7 @@
 import { cookies } from 'next/headers';
 import axios from 'axios';
 import Link from 'next/link';
-
-interface User {
-  id: string;
-  email: string;
-  name: string;
-  avatar?: string | null;
-  bio?: string | null;
-  role: string;
-}
+import type { UserDto } from '@shared/dtos';
 
 export default async function ProfilePage() {
   const cookieStore = await cookies();
@@ -18,7 +10,7 @@ export default async function ProfilePage() {
     .map((c) => `${c.name}=${c.value}`)
     .join('; ');
 
-  let user: User | null = null;
+  let user: UserDto | null = null;
 
   try {
     const res = await axios.get('http://localhost:3000/users/me', {

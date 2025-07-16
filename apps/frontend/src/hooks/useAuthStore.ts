@@ -1,17 +1,9 @@
 import { create } from 'zustand';
-
-export interface User {
-  id: string;
-  email: string;
-  name: string;
-  avatar?: string | null;
-  bio?: string | null;
-  role: string;
-}
+import type { UserDto } from '@shared/dtos';
 
 interface AuthState {
-  user: User | null;
-  setUser: (user: User | null) => void;
+  user: UserDto | null;
+  setUser: (user: UserDto | null) => void;
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
