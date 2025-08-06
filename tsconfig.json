@@ -6,7 +6,7 @@
     "declaration": true,
     "sourceMap": true,
     "outDir": "./dist",
-    "rootDir": "./",
+    "rootDir": ".",
     "strict": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
@@ -16,6 +16,7 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "baseUrl": ".",
+    "composite": true,
     "paths": {
       "@app/*": ["apps/*"],
       "@libs/*": ["libs/*"],
