@@ -5,8 +5,8 @@
     "declaration": true,
     "composite": true,
     "emitDeclarationOnly": false,
-    "rootDir": "."
+    "rootDir": "src"
   },
-  "include": ["**/*.ts"],
+  "include": ["src"],
   "exclude": ["node_modules", "dist", "test", "**/*.spec.ts"]
 }

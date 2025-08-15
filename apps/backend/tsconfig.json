@@ -2,12 +2,8 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "rootDir": "src",
-    "baseUrl": ".",
     "outDir": "../../dist/apps/backend",
-    "composite": true,
-    "paths": {
-      "@shared/*": ["../../packages/shared/*"]
-    }
+    "composite": true
   },
   "exclude": ["node_modules", "dist"],
   "include": ["src"],
