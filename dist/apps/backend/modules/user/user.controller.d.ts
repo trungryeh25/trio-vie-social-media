@@ -5,9 +5,9 @@ export declare class UserController {
     private readonly userService;
     constructor(userService: UserService);
     getProfile(user: JwtPayload): Promise<{
+        id: string;
         email: string;
         name: string;
-        id: string;
         avatar: string | null;
         bio: string | null;
         passwordHash: string;
@@ -16,9 +16,9 @@ export declare class UserController {
         updatedAt: Date;
     } | null>;
     updateProfile(user: JwtPayload, dto: UpdateProfileDto): Promise<{
+        id: string;
         email: string;
         name: string;
-        id: string;
         avatar: string | null;
         bio: string | null;
         passwordHash: string;
