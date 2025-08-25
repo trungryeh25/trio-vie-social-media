@@ -14,11 +14,11 @@
     "isolatedModules": true,
     "incremental": true,
     "jsx": "preserve",
-    "baseUrl": ".",
+    "baseUrl": "src",
     "composite": true,
     "paths": {
-      "@/*": ["./src/*"],
-      "@shared/*": ["../../packages/shared/*"]
+      "@/*": ["*"],
+      "@shared/*": ["../../packages/shared/dist/*"]
     },
     "plugins": [
       {

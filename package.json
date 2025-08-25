@@ -11,7 +11,10 @@
     "lint:fix": "eslint \"{apps,packages}/**/*.{ts,tsx}\" --fix",
     "format": "prettier --write .",
     "prepare": "husky install",
-    "dev": "echo 'Run individual dev scripts inside apps!'"
+  "dev": "echo 'Run individual dev scripts inside apps!'",
+  "build:shared": "npm --prefix packages/shared run build",
+  "build:all": "npm run build:shared && npm --prefix apps/backend run build && npm --prefix apps/frontend run build",
+  "dev:all": "concurrently \"npm --prefix apps/backend run start:dev\" \"npm --prefix apps/frontend run dev\""
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^8.36.0",

@@ -8,16 +8,18 @@ datasource db {
 }
 
 model User {
-  id           String         @id @default(uuid())
-  email        String         @unique
-  name         String
-  avatar       String?
-  bio          String?
-  passwordHash String
-  role         Role           @default(USER)
-  createdAt    DateTime       @default(now())
-  updatedAt    DateTime       @updatedAt
+  id            String         @id @default(uuid())
+  email         String         @unique
+  name          String
+  avatar        String?
+  bio           String?
+  passwordHash  String
+  role          Role           @default(USER)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
   refreshTokens RefreshToken[]
+  posts         Post[]
+  comments      Comment[]
 }
 
 model RefreshToken {
@@ -32,4 +34,34 @@ model RefreshToken {
 enum Role {
   USER
   ADMIN
+}
+
+model Post {
+  id           String   @id @default(uuid())
+  authorId     String
+  author       User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  content      String
+  mediaUrls    String[] @db.Text
+  createdAt    DateTime @default(now())
+  likeCount    Int      @default(0)
+  commentCount Int      @default(0)
+  isDeleted    Boolean  @default(false)
+
+  comments Comment[]
+}
+
+model Comment {
+  id              String    @id @default(uuid())
+  postId          String
+  post            Post      @relation(fields: [postId], references: [id], onDelete: Cascade)
+  parentCommentId String?
+  parentComment   Comment?  @relation("CommentReplies", fields: [parentCommentId], references: [id])
+  replies         Comment[] @relation("CommentReplies")
+  authorId        String
+  author          User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  content         String
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  isDeleted       Boolean   @default(false)
+  replyCount      Int       @default(0)
 }

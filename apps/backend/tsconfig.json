@@ -3,7 +3,8 @@
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "dist",
-    "baseUrl": ".",
+    "baseUrl": "src",
+    "types": ["node", "multer"],
     "paths": {
       "@shared/*": ["../../packages/shared/*"]
     },

@@ -21,6 +21,7 @@ services:
     container_name: trio_backend
     depends_on:
       - postgres
+      - minio
     environment:
       DATABASE_URL: postgres://triov:Trung147@postgres:5432/dbtriov
     ports:
@@ -36,5 +37,20 @@ services:
     ports:
       - '3000:3000'
 
+  minio:
+    image: minio/minio
+    container_name: trio_minio
+    restart: unless-stopped
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadminpw
+    ports:
+      - '9000:9000' # S3 API
+      - '9001:9001' # MinIO Console
+    command: server /data --console-address ":9001"
+    volumes:
+      - miniodata:/data
+
 volumes:
   pgdata:
+  miniodata:
